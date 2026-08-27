@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketFlow — Approve agents</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div>
+            <div class="brand-mark">TicketFlow <span class="brand-role-badge" id="brandRoleBadge"></span></div>
+            <nav>
+                <a href="tickets.html">Tickets</a>
+                <a href="new-ticket.html">New ticket</a>
+                <a href="admin.html" class="active" id="adminNavLink">Approve agents</a>
+            </nav>
+        </div>
+        <div class="user-chip">
+            <div id="userEmail" style="font-size:0.85rem; font-weight:600;"></div>
+            <span class="role-badge" id="userRole"></span>
+            <button id="logoutBtn" class="btn btn-ghost" style="width:100%; margin-top:12px;">Log out</button>
+        </div>
+    </aside>
+    <main class="main">
+        <div class="page-header"><h2>Pending agent approvals</h2></div>
+        <div id="pendingList"></div>
+    </main>
+</div>
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+### Create a ticket
+POST http://localhost:8080/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Login page not loading",
+  "description": "Blank screen la varuthu, login button click panna",
+  "priority": "HIGH"
+}
+
+### Get all tickets
+GET http://localhost:8080/api/tickets
+
+### Get one ticket
+GET http://localhost:8080/api/tickets/1
+
+### Update ticket (PUT)
+PUT http://localhost:8080/api/tickets/1
+Content-Type: application/json
+
+{
+  "title": "Login page not loading - updated",
+  "description": "Chrome mattum than varuthu",
+  "priority": "CRITICAL",
+  "createdById": 1
+}
+
+### Valid status move
+PATCH http://localhost:8080/api/tickets/1/status?status=IN_PROGRESS
+
+### Invalid jump - vேண்டுмна fail aagаணும் (400 expected)
+PATCH http://localhost:8080/api/tickets/1/status?status=CLOSED
+
+### Empty title - validation fail aaganum (400 expected)
+POST http://localhost:8080/api/tickets
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "test",
+  "priority": "LOW",
+  "createdById": 1
+}
+
+### Add comment
+POST http://localhost:8080/api/tickets/1/comments
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "content": "Idha paakuren, konjam wait pannunga"
+}
+
+### Get comments
+GET http://localhost:8080/api/tickets/1/comments
+
+### Register customer
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "rasim",
+  "email": "rasim@test.com",
+  "password": "pass123",
+  "role": "CUSTOMER"
+}
+
+### Register admin
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "email": "admin@test.com",
+  "password": "pass123",
+  "role": "ADMIN"
+}
+
+### Login as customer
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "rasim@test.com",
+  "password": "pass123"
+}
+
+### Create ticket - paste token from login response above
+POST http://localhost:8080/api/tickets
+Content-Type: application/json
+Authorization: Bearer PASTE_TOKEN_HERE
+
+{
+  "title": "Payment failing",
+  "description": "UPI payment fail aaguthu",
+  "priority": "HIGH"
+}
+
+### Try DELETE as customer - should get 403 Forbidden
+DELETE http://localhost:8080/api/tickets/1
+Authorization: Bearer PASTE_CUSTOMER_TOKEN_HERE

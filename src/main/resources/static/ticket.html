@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketFlow — Ticket detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div>
+            <div class="brand-mark">TicketFlow <span class="brand-role-badge" id="brandRoleBadge"></span></div>
+            <nav>
+                <a href="tickets.html" class="active">Tickets</a>
+                <a href="new-ticket.html">New ticket</a>
+            </nav>
+        </div>
+        <div class="user-chip">
+            <div id="userEmail" style="font-size:0.85rem; font-weight:600;"></div>
+            <span class="role-badge" id="userRole"></span>
+            <button id="logoutBtn" class="btn btn-ghost" style="width:100%; margin-top:12px;">Log out</button>
+        </div>
+    </aside>
+    <main class="main" style="max-width:640px;">
+        <a href="tickets.html" class="link" style="font-size:0.85rem;">&larr; Back to tickets</a>
+
+        <div class="detail-card" style="margin-top:16px;">
+            <div class="page-header" style="margin-bottom:0;">
+                <h3 id="ticketTitle" style="margin:0;"></h3>
+                <span class="badge" id="priorityBadge"></span>
+            </div>
+            <p id="ticketDescription" style="color:var(--ink-muted); margin-top:10px;"></p>
+
+            <div class="pipeline" id="pipeline"></div>
+
+            <div class="meta-row">
+                <div class="meta-item">Created by <strong id="ticketCreator"></strong></div>
+                <div class="meta-item">Ticket ID <strong class="mono" id="ticketIdLabel"></strong></div>
+            </div>
+
+            <div id="statusActions" style="margin-top:18px;"></div>
+        </div>
+
+        <h4>Comments</h4>
+        <div id="commentList" style="margin-bottom:16px;"></div>
+
+        <form id="commentForm" class="comment-form">
+            <input type="text" id="commentContent" placeholder="Add a comment..." required>
+            <button type="submit" class="btn btn-primary" style="width:auto;">Post</button>
+        </form>
+    </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/ticket.js"></script>
+<a href="admin.html" id="adminNavLink">Approve agents</a>
+</body>
+</html>
